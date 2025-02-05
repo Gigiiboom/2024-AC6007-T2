@@ -1,1 +1,52 @@
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css')}}">
+</head>
 
+<body>
+    <div class="container">
+        <h2>Transfer Money</h2>
+
+        <input type="text" id="payer" placeholder="Enter payer address">
+        <input type="text" id="payee" placeholder="Enter payee address">
+        <input type="number" id="amount" placeholder="Enter amount to transfer">
+        <button class="btn" onclick="transfer()">Transfer</button>
+        <button class="btn" onclick="transaction()">Transaction</button>
+
+        <form action="/" method="post">
+            <input type="submit" value="Main">
+        </form>
+
+        <p id="view_payer"></p >
+        <p id="view_payee"></p >
+        <p id="view_amount"></p >
+        <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+        <script>
+            const contractAddress = "0x428ED59d7E0F540a9B7215067401502974952520";
+            const contractABI = [
+                {
+                    "inputs": [],
+                    "stateMutability": "nonpayable",
+                    "type": "constructor"
+                },
+                {
+                    "inputs": [
+                        {
+                            "internalType": "address",
+                            "name": "payer_add",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "payee_add",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "pay_amount",
+                            "type": "uint256"
+                        }
+                    ],
+                    "name": "weixin",
+                    "outputs": [],
+                    "stateMutability": "nonpa
